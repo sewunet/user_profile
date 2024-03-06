@@ -8,7 +8,8 @@ class UserEnabled(Document):
         quota = frappe.get_site_config()['quota']
         allowed_users = quota["users"]
         active_users = quota['active_users']
-         if self.allowed_users < self.active_users:
+        
+        if self.allowed_users < self.active_users:
             frappe.throw('Only {} active users allowed and you have {} active users. Please disable users or to increase the limit please contact sales'. format(allowed_users, active_users))
 		# # clear new password
 		# super().share_with_self()
